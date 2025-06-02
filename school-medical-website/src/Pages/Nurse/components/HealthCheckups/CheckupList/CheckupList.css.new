@@ -1,0 +1,359 @@
+/* Styles for the CheckupList component */
+.checkup-list-container {
+  padding: 20px;
+  background-color: #fff;
+  border-radius: 8px;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  height: calc(100vh - 120px);
+  overflow-y: auto;
+  position: relative;
+}
+
+/* Header styles */
+.checkup-list-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 20px;
+  padding-bottom: 15px;
+  border-bottom: 1px solid #eaeaea;
+}
+
+.checkup-list-header h2 {
+  margin: 0;
+  font-size: 24px;
+  color: #333;
+  font-weight: 600;
+}
+
+/* Search and filter controls */
+.controls {
+  display: flex;
+  gap: 15px;
+}
+
+.search-filter-container {
+  display: flex;
+  gap: 10px;
+}
+
+.search-input {
+  padding: 8px 12px;
+  border: 1px solid #ddd;
+  border-radius: 4px;
+  min-width: 240px;
+  font-size: 14px;
+}
+
+.filter-select {
+  padding: 8px 12px;
+  border: 1px solid #ddd;
+  border-radius: 4px;
+  background-color: #f5f5f5;
+  font-size: 14px;
+  cursor: pointer;
+}
+
+.add-btn {
+  background-color: #4CAF50;
+  color: white;
+  border: none;
+  padding: 8px 15px;
+  border-radius: 4px;
+  cursor: pointer;
+  font-size: 14px;
+  display: flex;
+  align-items: center;
+  gap: 5px;
+  transition: all 0.3s ease;
+}
+
+.add-btn:hover {
+  background-color: #45a049;
+  transform: translateY(-2px);
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+/* Table styles */
+.table-container {
+  overflow-x: auto;
+}
+
+.checkup-table {
+  width: 100%;
+  border-collapse: collapse;
+  margin-top: 10px;
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.05);
+}
+
+.checkup-table th {
+  background-color: #f5f5f5;
+  padding: 12px;
+  text-align: left;
+  font-weight: 600;
+  color: #555;
+  border-bottom: 2px solid #ddd;
+}
+
+.checkup-table td {
+  padding: 12px;
+  border-bottom: 1px solid #eaeaea;
+  vertical-align: top;
+}
+
+.checkup-table tr:hover {
+  background-color: #f9f9f9;
+}
+
+/* Campaign name and description */
+.campaign-name {
+  color: #2196F3;
+  font-weight: 500;
+  margin-bottom: 5px;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.view-details {
+  font-size: 12px;
+  color: #888;
+  visibility: hidden;
+  padding: 2px 8px;
+  background-color: #f0f8ff;
+  border-radius: 4px;
+  transition: all 0.3s ease;
+}
+
+.campaign-name:hover .view-details {
+  visibility: visible;
+}
+
+.campaign-description {
+  font-size: 13px;
+  color: #666;
+  margin-top: 3px;
+}
+
+/* Progress bar */
+.progress {
+  height: 8px;
+  background-color: #eee;
+  border-radius: 4px;
+  overflow: hidden;
+  margin-bottom: 5px;
+}
+
+.progress-bar {
+  height: 100%;
+  background-color: #4CAF50;
+  border-radius: 4px;
+}
+
+.progress-text {
+  font-size: 12px;
+  color: #555;
+}
+
+/* Status badges */
+.status-badge {
+  display: inline-block;
+  padding: 5px 10px;
+  border-radius: 20px;
+  font-size: 12px;
+  font-weight: 500;
+}
+
+.status-active {
+  background-color: rgba(76, 175, 80, 0.15);
+  color: #2e7d32;
+}
+
+.status-upcoming {
+  background-color: rgba(33, 150, 243, 0.15);
+  color: #1565c0;
+}
+
+.status-completed {
+  background-color: rgba(156, 39, 176, 0.15);
+  color: #7b1fa2;
+}
+
+.status-cancelled {
+  background-color: rgba(244, 67, 54, 0.15);
+  color: #c62828;
+}
+
+/* Action buttons */
+.action-buttons {
+  display: flex;
+  gap: 8px;
+  align-items: center;
+}
+
+.action-btn {
+  width: 30px;
+  height: 30px;
+  border-radius: 4px;
+  border: none;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  transition: all 0.2s ease;
+}
+
+.edit-btn {
+  background-color: rgba(33, 150, 243, 0.15);
+  color: #1976d2;
+}
+
+.edit-btn:hover {
+  background-color: rgba(33, 150, 243, 0.3);
+}
+
+.delete-btn {
+  background-color: rgba(244, 67, 54, 0.15);
+  color: #d32f2f;
+}
+
+.delete-btn:hover {
+  background-color: rgba(244, 67, 54, 0.3);
+}
+
+.status-btn {
+  background-color: rgba(158, 158, 158, 0.15);
+  color: #616161;
+}
+
+.status-btn:hover {
+  background-color: rgba(158, 158, 158, 0.3);
+}
+
+/* Status dropdown */
+.status-dropdown {
+  position: relative;
+  display: inline-block;
+}
+
+.status-dropdown-content {
+  display: none;
+  position: absolute;
+  right: 0;
+  background-color: white;
+  min-width: 160px;
+  box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.1);
+  z-index: 10;
+  border-radius: 4px;
+  overflow: hidden;
+}
+
+.status-dropdown:hover .status-dropdown-content {
+  display: block;
+}
+
+.status-dropdown-content button {
+  width: 100%;
+  padding: 10px 16px;
+  text-align: left;
+  border: none;
+  background: none;
+  cursor: pointer;
+  font-size: 13px;
+  color: #333;
+  transition: background-color 0.2s ease;
+}
+
+.status-dropdown-content button:hover {
+  background-color: #f5f5f5;
+}
+
+/* Empty message */
+.empty-message {
+  text-align: center;
+  padding: 40px;
+  color: #888;
+  font-style: italic;
+}
+
+/* Form styles */
+.checkup-items-container {
+  padding: 10px;
+  border: 1px solid #eee;
+  border-radius: 4px;
+  margin-bottom: 10px;
+}
+
+/* Form required fields */
+.required {
+  color: #f44336;
+  margin-left: 4px;
+}
+
+.form-note {
+  font-size: 13px;
+  color: #666;
+  font-style: italic;
+}
+
+/* Loading overlay */
+.loading-overlay {
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background-color: rgba(255, 255, 255, 0.8);
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  z-index: 100;
+}
+
+.spinner {
+  width: 40px;
+  height: 40px;
+  margin-bottom: 10px;
+  border: 4px solid rgba(0, 0, 0, 0.1);
+  border-left-color: #4CAF50;
+  border-radius: 50%;
+  animation: spin 1s linear infinite;
+}
+
+@keyframes spin {
+  0% {
+    transform: rotate(0deg);
+  }
+  100% {
+    transform: rotate(360deg);
+  }
+}
+
+/* Responsive adjustments */
+@media (max-width: 992px) {
+  .checkup-list-header {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 15px;
+  }
+  
+  .controls {
+    flex-direction: column;
+    width: 100%;
+  }
+  
+  .search-filter-container {
+    width: 100%;
+  }
+  
+  .search-input, .filter-select {
+    width: 100%;
+  }
+  
+  .add-btn {
+    width: 100%;
+    justify-content: center;
+  }
+}

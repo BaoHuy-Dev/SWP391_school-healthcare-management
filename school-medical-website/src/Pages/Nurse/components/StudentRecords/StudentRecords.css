@@ -1,0 +1,40 @@
+.student-records-container {
+  display: flex;
+  flex-direction: column;
+  height: 100%;
+}
+
+.student-records-tabs {
+  display: flex;
+  background-color: #fff;
+  border-radius: 8px 8px 0 0;
+  overflow: hidden;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+.sr-tab {
+  padding: 15px 20px;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  font-weight: 500;
+  border-bottom: 3px solid transparent;
+  transition: all 0.2s ease;
+}
+
+.sr-tab:hover {
+  background-color: #f9f9f9;
+}
+
+.sr-tab.active {
+  border-bottom-color: #4a90e2;
+  color: #4a90e2;
+}
+
+.student-records-content {
+  flex: 1;
+  overflow-y: auto;
+  background-color: #f5f5f5;
+  border-radius: 0 0 8px 8px;
+}

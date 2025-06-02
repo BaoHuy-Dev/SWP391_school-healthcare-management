@@ -1,0 +1,999 @@
+/* Container chính */
+.vaccine-management {
+  background-color: #f8f9fa;
+  border-radius: 10px;
+  padding: 24px;
+  box-shadow: 0 3px 10px rgba(0, 0, 0, 0.05);
+}
+
+/* Phần tiêu đề và nút thêm */
+.header-actions {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 24px;
+  padding-bottom: 16px;
+  border-bottom: 1px solid #e9ecef;
+}
+
+.header-actions h3 {
+  font-size: 24px;
+  color: #343a40;
+  margin: 0;
+  font-weight: 600;
+  position: relative;
+  padding-left: 16px;
+}
+
+.header-actions h3::before {
+  content: "";
+  position: absolute;
+  left: 0;
+  top: 50%;
+  transform: translateY(-50%);
+  height: 24px;
+  width: 4px;
+  background-color: #4caf50;
+  border-radius: 2px;
+}
+
+.action-buttons {
+  display: flex;
+  gap: 12px;
+}
+
+.btn-inventory {
+  background-color: #2196f3;
+  color: white;
+  border: none;
+  border-radius: 6px;
+  padding: 12px 20px;
+  font-size: 15px;
+  font-weight: 500;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  transition: all 0.3s ease;
+  box-shadow: 0 2px 6px rgba(33, 150, 243, 0.2);
+}
+
+.btn-inventory:hover {
+  background-color: #1976d2;
+  box-shadow: 0 4px 10px rgba(33, 150, 243, 0.3);
+  transform: translateY(-2px);
+}
+
+.btn-inventory i {
+  margin-right: 8px;
+}
+
+.add-btn {
+  background-color: #4caf50;
+  color: white;
+  border: none;
+  border-radius: 6px;
+  padding: 12px 20px;
+  font-size: 15px;
+  font-weight: 500;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  transition: all 0.3s ease;
+  box-shadow: 0 2px 6px rgba(76, 175, 80, 0.2);
+}
+
+.add-btn:hover {
+  background-color: #3d8b40;
+  box-shadow: 0 4px 10px rgba(76, 175, 80, 0.3);
+  transform: translateY(-2px);
+}
+
+.add-btn i {
+  margin-right: 8px;
+  font-size: 16px;
+}
+
+/* Phần bộ lọc */
+.filter-section {
+  background-color: white;
+  border-radius: 8px;
+  padding: 20px;
+  margin-bottom: 24px;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.04);
+  border: 1px solid #e9ecef;
+}
+
+.filter-section.compact {
+  padding: 16px;
+}
+
+.filter-row {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+}
+
+.filter-item {
+  flex: 1;
+}
+
+.filter-item input {
+  width: 100%;
+  padding: 12px 16px;
+  border: 1px solid #dee2e6;
+  border-radius: 6px;
+  font-size: 14px;
+  transition: all 0.3s;
+  background-color: #f8f9fa;
+}
+
+.filter-item input:focus {
+  outline: none;
+  border-color: #4caf50;
+  box-shadow: 0 0 0 3px rgba(76, 175, 80, 0.1);
+  background-color: white;
+}
+
+.filter-actions {
+  display: flex;
+  gap: 12px;
+}
+
+.btn-search,
+.btn-reset {
+  padding: 12px 20px;
+  font-size: 14px;
+  font-weight: 500;
+  border: none;
+  border-radius: 6px;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  transition: all 0.3s;
+}
+
+.btn-search {
+  background-color: #2196f3;
+  color: white;
+  box-shadow: 0 2px 6px rgba(33, 150, 243, 0.2);
+}
+
+.btn-search:hover {
+  background-color: #1976d2;
+  box-shadow: 0 4px 10px rgba(33, 150, 243, 0.3);
+  transform: translateY(-2px);
+}
+
+.btn-reset {
+  background-color: #f1f3f5;
+  color: #495057;
+  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.05);
+}
+
+.btn-reset:hover {
+  background-color: #e9ecef;
+  color: #212529;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.08);
+  transform: translateY(-2px);
+}
+
+.btn-search i,
+.btn-reset i {
+  margin-right: 8px;
+  font-size: 14px;
+}
+
+/* Phần loading */
+.loading {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  padding: 60px 0;
+  color: #6c757d;
+}
+
+.loading i {
+  font-size: 40px;
+  color: #4caf50;
+  margin-bottom: 16px;
+  animation: spin 1.5s infinite ease;
+}
+
+@keyframes spin {
+  0% { transform: rotate(0deg); }
+  100% { transform: rotate(360deg); }
+}
+
+.loading p {
+  font-size: 16px;
+  margin: 0;
+}
+
+/* Bảng dữ liệu */
+.table-container {
+  background-color: white;
+  border-radius: 10px;
+  overflow: hidden;
+  box-shadow: 0 3px 15px rgba(0, 0, 0, 0.06);
+}
+
+.vaccines-table {
+  width: 100%;
+  border-collapse: separate;
+  border-spacing: 0;
+  font-size: 14px;
+}
+
+.vaccines-table thead {
+  background-color: #f8f9fa;
+}
+
+.vaccines-table th {
+  color: #495057;
+  font-weight: 600;
+  text-align: left;
+  padding: 16px;
+  border-bottom: 2px solid #e9ecef;
+  position: sticky;
+  top: 0;
+  z-index: 1;
+  background-color: #f8f9fa;
+}
+
+.vaccines-table tbody tr {
+  transition: all 0.2s;
+}
+
+.vaccines-table tbody tr:hover {
+  background-color: #f1f8e9;
+  transform: translateY(-1px);
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.03);
+}
+
+.vaccines-table td {
+  padding: 16px;
+  border-bottom: 1px solid #e9ecef;
+  vertical-align: middle;
+}
+
+.vaccines-table tr:last-child td {
+  border-bottom: none;
+}
+
+/* Trạng thái vaccine */
+.badge {
+  display: inline-block;
+  padding: 6px 12px;
+  border-radius: 20px;
+  font-size: 12px;
+  font-weight: 500;
+  text-align: center;
+  min-width: 100px;
+}
+
+.badge.mandatory {
+  background-color: #e3f2fd;
+  color: #1976d2;
+  border: 1px solid #bbdefb;
+}
+
+.badge.optional {
+  background-color: #f5f5f5;
+  color: #607d8b;
+  border: 1px solid #e0e0e0;
+}
+
+.status {
+  display: inline-block;
+  padding: 6px 12px;
+  border-radius: 20px;
+  font-size: 12px;
+  font-weight: 500;
+  text-align: center;
+  min-width: 120px;
+}
+
+.status.active {
+  background-color: #e8f5e9;
+  color: #2e7d32;
+  border: 1px solid #c8e6c9;
+}
+
+.status.inactive {
+  background-color: #ffebee;
+  color: #d32f2f;
+  border: 1px solid #ffcdd2;
+}
+
+/* Nút thao tác */
+.actions {
+  display: flex;
+  gap: 8px;
+  justify-content: center;
+}
+
+.btn-view,
+.btn-edit {
+  width: 36px;
+  height: 36px;
+  border-radius: 50%;
+  border: none;
+  background-color: #f1f3f5;
+  color: #495057;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: all 0.2s;
+}
+
+.btn-view {
+  background-color: #e3f2fd;
+  color: #1976d2;
+}
+
+.btn-view:hover {
+  background-color: #1976d2;
+  color: white;
+  box-shadow: 0 3px 8px rgba(25, 118, 210, 0.3);
+  transform: translateY(-2px);
+}
+
+.btn-edit {
+  background-color: #e8f5e9;
+  color: #2e7d32;
+}
+
+.btn-edit:hover {
+  background-color: #2e7d32;
+  color: white;
+  box-shadow: 0 3px 8px rgba(46, 125, 50, 0.3);
+  transform: translateY(-2px);
+}
+
+/* Nút xóa */
+.btn-delete {
+  width: 36px;
+  height: 36px;
+  border-radius: 50%;
+  border: none;
+  background-color: #ffebee;
+  color: #d32f2f;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: all 0.2s;
+}
+
+.btn-delete {
+  background-color: #ff4d4f;
+  color: white;
+  border: none;
+  padding: 5px 10px;
+  border-radius: 4px;
+  cursor: pointer;
+  margin-left: 5px;
+}
+
+.btn-delete:hover {
+  background-color: #ff7875;
+}
+
+.confirmation-modal {
+  max-width: 400px;
+}
+
+.btn-danger {
+  background-color: #ff4d4f;
+  color: white;
+  border: none;
+  padding: 8px 16px;
+  border-radius: 4px;
+  cursor: pointer;
+}
+
+.btn-secondary {
+  background-color: #d9d9d9;
+  color: rgba(0, 0, 0, 0.85);
+  border: none;
+  padding: 8px 16px;
+  border-radius: 4px;
+  cursor: pointer;
+  margin-right: 10px;
+}
+
+.warning-text {
+  color: #ff4d4f;
+  font-style: italic;
+}
+
+/* Modal chi tiết vaccine */
+.modal-overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background-color: rgba(0, 0, 0, 0.5);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 1000;
+}
+
+.modal-container {
+  background-color: white;
+  border-radius: 10px;
+  width: 90%;
+  max-width: 600px;
+  max-height: 90vh;
+  overflow-y: auto;
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2);
+  animation: modalFadeIn 0.3s ease;
+}
+
+@keyframes modalFadeIn {
+  from {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.modal-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 20px 24px;
+  border-bottom: 1px solid #e9ecef;
+}
+
+.modal-header h3 {
+  font-size: 20px;
+  color: #343a40;
+  margin: 0;
+  font-weight: 600;
+}
+
+.btn-close {
+  background: none;
+  border: none;
+  font-size: 20px;
+  color: #6c757d;
+  cursor: pointer;
+  padding: 5px;
+}
+
+.modal-body {
+  padding: 24px;
+}
+
+.vaccine-details {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+}
+
+.detail-row {
+  display: flex;
+  align-items: flex-start;
+}
+
+.detail-label {
+  width: 160px;
+  color: #495057;
+  font-weight: 500;
+  padding-right: 16px;
+}
+
+.detail-value {
+  flex: 1;
+  color: #212529;
+}
+
+.detail-value.description {
+  line-height: 1.6;
+  white-space: pre-wrap;
+}
+
+.modal-footer {
+  padding: 20px 24px;
+  border-top: 1px solid #e9ecef;
+  display: flex;
+  justify-content: flex-end;
+}
+
+.btn-primary {
+  background-color: #4caf50;
+  color: white;
+  border: none;
+  border-radius: 6px;
+  padding: 10px 20px;
+  font-size: 15px;
+  font-weight: 500;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  transition: all 0.3s ease;
+}
+
+.btn-primary:hover {
+  background-color: #3d8b40;
+}
+
+.btn-primary i {
+  margin-right: 8px;
+}
+
+/* CSS cho hiển thị tab */
+.vaccine-tabs {
+  display: flex;
+  gap: 2px;
+  background-color: #e9ecef;
+  border-radius: 8px;
+  margin-bottom: 20px;
+  padding: 4px;
+}
+
+.tab-button {
+  flex: 1;
+  background-color: transparent;
+  border: none;
+  padding: 12px;
+  font-size: 15px;
+  font-weight: 500;
+  cursor: pointer;
+  transition: all 0.3s;
+  border-radius: 6px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+}
+
+.tab-button.active {
+  background-color: white;
+  color: #4caf50;
+  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.1);
+}
+
+.tab-button i {
+  font-size: 16px;
+}
+
+/* CSS cho hiển thị số lượng tồn kho */
+.stock-status {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  padding: 6px 12px;
+  border-radius: 20px;
+  font-weight: 600;
+  min-width: 50px;
+  gap: 8px;
+}
+
+.stock-status.out-of-stock {
+  background-color: #ffebee;
+  color: #d32f2f;
+  border: 1px solid #ffcdd2;
+}
+
+.stock-status.low-stock {
+  background-color: #fff8e1;
+  color: #ff8f00;
+  border: 1px solid #ffe082;
+}
+
+.stock-status.in-stock {
+  background-color: #e8f5e9;
+  color: #2e7d32;
+  border: 1px solid #c8e6c9;
+}
+
+.stock-status i {
+  font-size: 12px;
+  margin-left: 4px;
+}
+
+/* CSS cho nút quản lý lô */
+.btn-batch {
+  width: 36px;
+  height: 36px;
+  border-radius: 50%;
+  border: none;
+  background-color: #e8f0fe;
+  color: #4285f4;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: all 0.2s;
+}
+
+.btn-batch:hover {
+  background-color: #4285f4;
+  color: white;
+  box-shadow: 0 3px 8px rgba(66, 133, 244, 0.3);
+  transform: translateY(-2px);
+}
+
+/* CSS cho phần chọn vaccine trong tab Quản lý lô */
+.batch-management-container {
+  background-color: white;
+  border-radius: 8px;
+  padding: 20px;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.06);
+}
+
+.select-vaccine-section {
+  margin-bottom: 24px;
+}
+
+.select-vaccine-section h4 {
+  font-size: 16px;
+  color: #2c3e50;
+  margin-top: 0;
+  margin-bottom: 12px;
+}
+
+.vaccine-selector {
+  width: 100%;
+  padding: 12px;
+  border: 1px solid #dee2e6;
+  border-radius: 6px;
+  font-size: 14px;
+  background-color: #f8f9fa;
+  color: #495057;
+}
+
+.vaccine-selector:focus {
+  outline: none;
+  border-color: #4caf50;
+  box-shadow: 0 0 0 3px rgba(76, 175, 80, 0.1);
+}
+
+/* CSS cho phần hiển thị chi tiết lô trong modal */
+.detail-section {
+  margin-top: 24px;
+  padding-top: 24px;
+  border-top: 1px solid #e9ecef;
+}
+
+.detail-section h4 {
+  font-size: 16px;
+  color: #2c3e50;
+  margin-top: 0;
+  margin-bottom: 16px;
+}
+
+/* Responsive styles */
+@media (max-width: 992px) {
+  .header-actions {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 16px;
+  }
+
+  .add-btn {
+    align-self: flex-end;
+  }
+}
+
+@media (max-width: 768px) {
+  .filter-row {
+    flex-direction: column;
+    gap: 12px;
+  }
+
+  .filter-actions {
+    width: 100%;
+    justify-content: space-between;
+  }
+
+  .btn-search,
+  .btn-reset {
+    flex: 1;
+  }
+
+  .table-container {
+    overflow-x: auto;
+  }
+
+  .vaccines-table {
+    min-width: 900px;
+  }
+  
+  .modal-container {
+    width: 95%;
+  }
+  
+  .detail-row {
+    flex-direction: column;
+    gap: 4px;
+  }
+  
+  .detail-label {
+    width: 100%;
+  }
+  
+  .vaccine-tabs {
+    flex-direction: column;
+    gap: 8px;
+    padding: 8px;
+  }
+  
+  .tab-button {
+    border-radius: 6px;
+  }
+}
+
+.vaccine-form .form-group {
+  margin-bottom: 20px;
+}
+
+.vaccine-form label {
+  display: block;
+  margin-bottom: 8px;
+  font-weight: 500;
+  color: #424242;
+}
+
+.vaccine-form .required {
+  color: #f44336;
+  margin-left: 3px;
+}
+
+.vaccine-form input, 
+.vaccine-form textarea,
+.vaccine-form select {
+  width: 100%;
+  padding: 10px 12px;
+  border: 1px solid #dcdfe6;
+  border-radius: 4px;
+  font-size: 14px;
+  transition: all 0.3s;
+}
+
+.vaccine-form input:focus, 
+.vaccine-form textarea:focus,
+.vaccine-form select:focus {
+  outline: none;
+  border-color: #1976d2;
+  box-shadow: 0 0 0 3px rgba(25, 118, 210, 0.1);
+}
+
+.vaccine-form .form-row {
+  display: flex;
+  gap: 20px;
+}
+
+.vaccine-form .form-row .form-group {
+  flex: 1;
+}
+
+.vaccine-form .checkbox-row {
+  margin-top: 10px;
+}
+
+.vaccine-form .checkbox-group {
+  display: flex;
+  align-items: center;
+}
+
+.vaccine-form .checkbox-label {
+  display: flex;
+  align-items: center;
+  cursor: pointer;
+}
+
+.vaccine-form .checkbox-label input {
+  width: auto;
+  margin-right: 10px;
+}
+
+.vaccine-form .error-message {
+  color: #f44336;
+  font-size: 12px;
+  margin-top: 5px;
+}
+
+.vaccine-form .error-alert {
+  background-color: #ffebee;
+  color: #d32f2f;
+  padding: 10px 15px;
+  border-radius: 4px;
+  margin-top: 15px;
+  display: flex;
+  align-items: center;
+}
+
+.vaccine-form .error-alert i {
+  margin-right: 10px;
+}
+
+.delete-modal {
+  max-width: 500px;
+}
+
+.delete-warning {
+  display: flex;
+  align-items: center;
+  margin-bottom: 20px;
+  color: #d32f2f;
+}
+
+.delete-warning i {
+  font-size: 24px;
+  margin-right: 10px;
+}
+
+.vaccine-summary {
+  background-color: #f5f5f5;
+  padding: 15px;
+  border-radius: 6px;
+  margin-bottom: 20px;
+}
+
+.delete-notice {
+  color: #757575;
+  font-size: 14px;
+  font-style: italic;
+}
+
+/* Modal xác nhận xóa */
+.delete-modal {
+  max-width: 500px;
+}
+
+.delete-warning {
+  display: flex;
+  align-items: center;
+  margin-bottom: 20px;
+  color: #d32f2f;
+}
+
+.delete-warning i {
+  font-size: 24px;
+  margin-right: 10px;
+}
+
+.vaccine-summary {
+  background-color: #f5f5f5;
+  padding: 15px;
+  border-radius: 6px;
+  margin-bottom: 20px;
+}
+
+.delete-notice {
+  color: #757575;
+  font-size: 14px;
+  font-style: italic;
+}
+
+/* Modal xác nhận xóa */
+.delete-modal {
+  max-width: 500px;
+}
+
+.delete-warning {
+  display: flex;
+  align-items: center;
+  margin-bottom: 20px;
+  color: #d32f2f;
+}
+
+.delete-warning i {
+  font-size: 24px;
+  margin-right: 10px;
+}
+
+.vaccine-summary {
+  background-color: #f5f5f5;
+  padding: 15px;
+  border-radius: 6px;
+  margin-bottom: 20px;
+}
+
+.delete-notice {
+  color: #757575;
+  font-size: 14px;
+  font-style: italic;
+}
+
+/* Form styles */
+.vaccine-form .form-group {
+  margin-bottom: 20px;
+}
+
+.vaccine-form label {
+  display: block;
+  margin-bottom: 8px;
+  font-weight: 500;
+  color: #424242;
+}
+
+.vaccine-form .required {
+  color: #f44336;
+  margin-left: 3px;
+}
+
+.vaccine-form input, 
+.vaccine-form textarea,
+.vaccine-form select {
+  width: 100%;
+  padding: 10px 12px;
+  border: 1px solid #dcdfe6;
+  border-radius: 4px;
+  font-size: 14px;
+  transition: all 0.3s;
+}
+
+.vaccine-form input:focus, 
+.vaccine-form textarea:focus,
+.vaccine-form select:focus {
+  outline: none;
+  border-color: #1976d2;
+  box-shadow: 0 0 0 3px rgba(25, 118, 210, 0.1);
+}
+
+.vaccine-form .form-row {
+  display: flex;
+  gap: 20px;
+}
+
+.vaccine-form .form-row .form-group {
+  flex: 1;
+}
+
+.vaccine-form .checkbox-row {
+  margin-top: 10px;
+}
+
+.vaccine-form .checkbox-group {
+  display: flex;
+  align-items: center;
+}
+
+.vaccine-form .checkbox-label {
+  display: flex;
+  align-items: center;
+  cursor: pointer;
+}
+
+.vaccine-form .checkbox-label input {
+  width: auto;
+  margin-right: 10px;
+}
+
+.vaccine-form .error-message {
+  color: #f44336;
+  font-size: 12px;
+  margin-top: 5px;
+}
+
+.vaccine-form .error-alert {
+  background-color: #ffebee;
+  color: #d32f2f;
+  padding: 10px 15px;
+  border-radius: 4px;
+  margin-top: 15px;
+  display: flex;
+  align-items: center;
+}
+
+.vaccine-form .error-alert i {
+  margin-right: 10px;
+}
+
+@media (max-width: 768px) {
+  .vaccine-form .form-row {
+    flex-direction: column;
+    gap: 15px;
+  }
+}

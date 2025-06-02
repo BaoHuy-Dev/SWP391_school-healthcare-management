@@ -1,0 +1,220 @@
+.inventory-content {
+  background-color: #ffffff;
+  border-radius: 8px;
+  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+  padding: 20px;
+}
+
+/* Công cụ tìm kiếm và nút chức năng */
+.inventory-tools {
+  display: flex;
+  justify-content: space-between;
+  margin-bottom: 20px;
+}
+
+.search-box {
+  display: flex;
+  border: 1px solid #ddd;
+  border-radius: 4px;
+  overflow: hidden;
+}
+
+.search-field {
+  padding: 8px;
+  border: none;
+  border-right: 1px solid #ddd;
+  background-color: #f8f8f8;
+  cursor: pointer;
+  outline: none;
+}
+
+.search-box input {
+  border: none;
+  padding: 8px 12px;
+  flex-grow: 1;
+  min-width: 200px;
+}
+
+.search-box button {
+  background-color: #f0f0f0;
+  border: none;
+  padding: 8px 12px;
+  cursor: pointer;
+}
+
+.search-btn:hover {
+  background-color: #e0e0e0;
+}
+
+.action-buttons {
+  display: flex;
+  gap: 10px;
+}
+
+.action-buttons button {
+  padding: 8px 16px;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  gap: 5px;
+  transition: all 0.2s;
+}
+
+.action-buttons button:hover {
+  transform: translateY(-2px);
+}
+
+.add-btn {
+  background-color: #4caf50;
+  color: white;
+}
+
+.export-btn {
+  background-color: #2196f3;
+  color: white;
+}
+
+/* Bảng dữ liệu */
+.inventory-table {
+  overflow-x: auto;
+}
+
+.inventory-table table {
+  width: 100%;
+  border-collapse: collapse;
+}
+
+.inventory-table th, 
+.inventory-table td {
+  padding: 12px;
+  text-align: left;
+  border-bottom: 1px solid #eee;
+}
+
+.inventory-table th {
+  background-color: #f5f5f5;
+  font-weight: bold;
+}
+
+.action-cell {
+  display: flex;
+  gap: 5px;
+  justify-content: flex-start;
+}
+
+.action-btn {
+  background-color: transparent;
+  border: none;
+  cursor: pointer;
+  padding: 5px;
+  border-radius: 3px;
+  transition: all 0.2s;
+}
+
+.action-btn:hover {
+  background-color: rgba(0, 0, 0, 0.05);
+}
+
+.action-btn.export-btn i {
+  color: #2196f3;
+}
+
+.action-btn.edit-btn i {
+  color: #4caf50;
+}
+
+.action-btn.delete-btn i {
+  color: #f44336;
+}
+
+/* Hiển thị cảnh báo */
+.warning-low {
+  background-color: #ffebee;
+  color: #d32f2f;
+  font-weight: bold;
+  padding: 4px 8px;
+  border-radius: 4px;
+}
+
+.warning-alert {
+  background-color: #fff8e1;
+  color: #ff8f00;
+  font-weight: bold;
+  padding: 4px 8px;
+  border-radius: 4px;
+}
+
+/* Thông báo khi không có dữ liệu */
+.no-data {
+  text-align: center;
+  padding: 20px;
+  color: #757575;
+  font-style: italic;
+}
+
+/* Loading và error */
+.loading {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 200px;
+  font-size: 16px;
+  color: #666;
+}
+
+.loading::after {
+  content: "";
+  width: 20px;
+  height: 20px;
+  margin-left: 10px;
+  border: 2px solid #ddd;
+  border-top: 2px solid #2196f3;
+  border-radius: 50%;
+  animation: spin 1s linear infinite;
+}
+
+@keyframes spin {
+  0% { transform: rotate(0deg); }
+  100% { transform: rotate(360deg); }
+}
+
+.error {
+  background-color: #ffebee;
+  color: #d32f2f;
+  padding: 16px;
+  border-radius: 4px;
+  margin-bottom: 20px;
+}
+
+/* Responsive */
+@media (max-width: 768px) {
+  .inventory-tools {
+    flex-direction: column;
+    gap: 10px;
+  }
+  
+  .search-box {
+    width: 100%;
+  }
+  
+  .search-box input {
+    flex-grow: 1;
+  }
+  
+  .action-buttons {
+    justify-content: space-between;
+    width: 100%;
+  }
+  
+  .action-buttons button {
+    flex: 1;
+    justify-content: center;
+  }
+  
+  .action-cell {
+    flex-wrap: wrap;
+    justify-content: center;
+  }
+}

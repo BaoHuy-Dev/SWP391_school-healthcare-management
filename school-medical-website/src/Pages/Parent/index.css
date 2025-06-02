@@ -1,0 +1,1292 @@
+:root {
+  --default-font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto,
+    Ubuntu, "Helvetica Neue", Helvetica, Arial, "PingFang SC",
+    "Hiragino Sans GB", "Microsoft Yahei UI", "Microsoft Yahei",
+    "Source Han Sans CN", sans-serif;
+}
+
+.main-container {
+  overflow: hidden;
+  width: 100%;
+  color: #333;
+}
+
+.main-container,
+.main-container * {
+  box-sizing: border-box;
+}
+
+input,
+select,
+textarea,
+button {
+  outline: 0;
+}
+
+.main-container {
+  position: relative;
+  width: 1922px;
+  height: 3710px;
+  margin: 0 auto;
+}
+.rectangle {
+  position: absolute;
+  width: 1920px;
+  height: 3683px;
+  top: 0;
+  left: 0;
+  background: url(https://codia-f2c.s3.us-west-1.amazonaws.com/image/2025-05-27/t9Nf32Hw0J.png)
+    no-repeat center;
+  background-size: cover;
+  z-index: 2;
+}
+.rectangle-1 {
+  position: relative;
+  width: 1920px;
+  height: 3116px;
+  margin: 0 0 0 1px;
+  background: url(https://codia-f2c.s3.us-west-1.amazonaws.com/image/2025-05-27/NFpMeetMbS.png)
+    no-repeat center;
+  background-size: cover;
+  z-index: 1;
+  overflow: visible auto;
+}
+.flex-row {
+  position: relative;
+  width: 1921px;
+  height: 60px;
+  margin: 0 0 0 0;
+  z-index: 22;
+}
+.subtract {
+  position: absolute;
+  width: 1921px;
+  height: 60px;
+  top: 0;
+  left: 0;
+  background: url(https://codia-f2c.s3.us-west-1.amazonaws.com/image/2025-05-27/Qz5sJGQtrQ.png)
+    no-repeat center;
+  background-size: cover;
+  z-index: 5;
+}
+.login {
+  display: flex;
+  align-items: flex-start;
+  justify-content: flex-start;
+  position: absolute;
+  height: 19px;
+  top: 15px;
+  left: 1766px;
+  color: #ffffff;
+  font-family: Inter, var(--default-font-family);
+  font-size: 16px;
+  font-weight: 700;
+  line-height: 19px;
+  text-align: left;
+  white-space: nowrap;
+  z-index: 10;
+}
+.introduction {
+  display: flex;
+  align-items: flex-start;
+  justify-content: flex-start;
+  position: absolute;
+  height: 19px;
+  top: 17px;
+  left: 59px;
+  color: #ffffff;
+  font-family: Inter, var(--default-font-family);
+  font-size: 16px;
+  font-weight: 700;
+  line-height: 19px;
+  text-align: left;
+  white-space: nowrap;
+  z-index: 6;
+}
+.introduction-2 {
+  display: flex;
+  align-items: flex-start;
+  justify-content: flex-start;
+  position: absolute;
+  height: 19px;
+  top: 17px;
+  left: 59px;
+  color: #ffffff;
+  font-family: Inter, var(--default-font-family);
+  font-size: 16px;
+  font-weight: 700;
+  line-height: 19px;
+  text-align: left;
+  white-space: nowrap;
+  z-index: 13;
+}
+.guide {
+  display: flex;
+  align-items: flex-start;
+  justify-content: flex-start;
+  position: absolute;
+  height: 19px;
+  top: 17px;
+  left: 278px;
+  color: #ffffff;
+  font-family: Inter, var(--default-font-family);
+  font-size: 16px;
+  font-weight: 700;
+  line-height: 19px;
+  text-align: left;
+  white-space: nowrap;
+  z-index: 8;
+}
+.community {
+  display: flex;
+  align-items: flex-start;
+  justify-content: flex-start;
+  position: absolute;
+  height: 19px;
+  top: 17px;
+  left: 455px;
+  color: #ffffff;
+  font-family: Inter, var(--default-font-family);
+  font-size: 16px;
+  font-weight: 700;
+  line-height: 19px;
+  text-align: left;
+  white-space: nowrap;
+  z-index: 9;
+}
+.community-3 {
+  display: flex;
+  align-items: flex-start;
+  justify-content: flex-start;
+  position: absolute;
+  height: 19px;
+  top: 17px;
+  left: 455px;
+  color: #ffffff;
+  font-family: Inter, var(--default-font-family);
+  font-size: 16px;
+  font-weight: 700;
+  line-height: 19px;
+  text-align: left;
+  white-space: nowrap;
+  z-index: 21;
+}
+.vaccination-schedule {
+  display: flex;
+  align-items: flex-start;
+  justify-content: flex-start;
+  position: absolute;
+  height: 19px;
+  top: 17px;
+  left: 662px;
+  color: #ffffff;
+  font-family: Inter, var(--default-font-family);
+  font-size: 16px;
+  font-weight: 700;
+  line-height: 19px;
+  text-align: left;
+  white-space: nowrap;
+  z-index: 22;
+}
+.flex-row-4 {
+  position: relative;
+  width: 1812px;
+  height: 51px;
+  margin: 15px 0 0 62px;
+  z-index: 59;
+}
+.group {
+  position: absolute;
+  width: 2.81%;
+  height: 100%;
+  top: 0;
+  left: 0;
+  background: url(https://codia-f2c.s3.us-west-1.amazonaws.com/image/2025-05-27/n0nUTvxUNk.png)
+    no-repeat center;
+  background-size: 100% 100%;
+  z-index: 11;
+}
+.group-5 {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  top: 0;
+  left: 0;
+  background: url(https://codia-f2c.s3.us-west-1.amazonaws.com/image/2025-05-27/xcC1D2fAWO.png)
+    no-repeat center;
+  background-size: 100% 100%;
+  z-index: 24;
+}
+.home-6 {
+  display: flex;
+  align-items: flex-start;
+  justify-content: flex-start;
+  position: absolute;
+  height: 19px;
+  top: 17px;
+  left: 97px;
+  color: #154082;
+  font-family: Inter, var(--default-font-family);
+  font-size: 16px;
+  font-weight: 700;
+  line-height: 19px;
+  text-align: left;
+  white-space: nowrap;
+  z-index: 15;
+}
+.dat-lich-tu-van {
+  display: flex;
+  align-items: flex-start;
+  justify-content: flex-start;
+  position: absolute;
+  height: 19px;
+  top: 17px;
+  left: 269px;
+  color: #154082;
+  font-family: Inter, var(--default-font-family);
+  font-size: 16px;
+  font-weight: 700;
+  line-height: 19px;
+  text-align: left;
+  white-space: nowrap;
+  z-index: 7;
+}
+.ho-so-benh-an-hoc-sinh {
+  display: flex;
+  align-items: flex-start;
+  justify-content: flex-start;
+  position: absolute;
+  height: 19px;
+  top: 17px;
+  left: 475px;
+  color: #154082;
+  font-family: Inter, var(--default-font-family);
+  font-size: 16px;
+  font-weight: 700;
+  line-height: 19px;
+  text-align: left;
+  white-space: nowrap;
+  z-index: 16;
+}
+.ho-so-hoc-sinh {
+  display: flex;
+  align-items: flex-start;
+  justify-content: flex-start;
+  position: absolute;
+  height: 19px;
+  top: 17px;
+  left: 749px;
+  color: #154082;
+  font-family: Inter, var(--default-font-family);
+  font-size: 16px;
+  font-weight: 700;
+  line-height: 19px;
+  text-align: left;
+  white-space: nowrap;
+  z-index: 20;
+}
+.xem-thong-bao {
+  display: flex;
+  align-items: flex-start;
+  justify-content: flex-start;
+  position: absolute;
+  height: 19px;
+  top: 17px;
+  left: 957px;
+  color: #154082;
+  font-family: Inter, var(--default-font-family);
+  font-size: 16px;
+  font-weight: 700;
+  line-height: 19px;
+  text-align: left;
+  white-space: nowrap;
+  z-index: 17;
+}
+.gui-thuoc {
+  display: flex;
+  align-items: flex-start;
+  justify-content: flex-start;
+  position: absolute;
+  height: 19px;
+  top: 17px;
+  left: 1169px;
+  color: #154082;
+  font-family: Inter, var(--default-font-family);
+  font-size: 16px;
+  font-weight: 700;
+  line-height: 19px;
+  text-align: left;
+  white-space: nowrap;
+  z-index: 18;
+}
+.khai-bao-suc-khoe-hoc-sinh {
+  display: flex;
+  align-items: flex-start;
+  justify-content: flex-start;
+  position: absolute;
+  height: 19px;
+  top: 17px;
+  left: 1340px;
+  color: #154082;
+  font-family: Inter, var(--default-font-family);
+  font-size: 16px;
+  font-weight: 700;
+  line-height: 19px;
+  text-align: left;
+  white-space: nowrap;
+  z-index: 59;
+}
+.ho-so-phu-huynh {
+  display: flex;
+  align-items: flex-start;
+  justify-content: flex-start;
+  position: absolute;
+  height: 19px;
+  top: 17px;
+  left: 1680px;
+  color: #000000;
+  font-family: Inter, var(--default-font-family);
+  font-size: 16px;
+  font-weight: 700;
+  line-height: 19px;
+  text-align: left;
+  white-space: nowrap;
+  z-index: 19;
+}
+.flex-row-7 {
+  position: relative;
+  width: 1921px;
+  height: 176px;
+  margin: 12px 0 0 0;
+  z-index: 23;
+  overflow: visible auto;
+}
+.he-thong-quan-ly-y-te {
+  position: relative;
+  width: 1358px;
+  height: 38px;
+  margin: 45px 0 0 281px;
+  font-family: Inter, var(--default-font-family);
+  font-size: 32px;
+  font-weight: 700;
+  line-height: 38px;
+  background: url(https://codia-f2c.s3.us-west-1.amazonaws.com/image/2025-05-27/jq9Y5m1jVE.png)
+    no-repeat center;
+  background-size: cover;
+  z-index: 23;
+}
+.subtract-8 {
+  position: absolute;
+  width: 1921px;
+  height: 176px;
+  top: 0;
+  left: 0;
+  background: url(https://codia-f2c.s3.us-west-1.amazonaws.com/image/2025-05-27/476DRQi06U.png)
+    no-repeat center;
+  background-size: cover;
+  z-index: 4;
+}
+.flex-row-d {
+  position: relative;
+  width: 1118px;
+  height: 466px;
+  margin: 32px 0 0 403px;
+  z-index: 26;
+}
+.vi-sao-nen-chon {
+  position: absolute;
+  width: 592px;
+  height: 411px;
+  top: 0;
+  left: 0;
+  font-family: Inter, var(--default-font-family);
+  font-size: 40px;
+  font-weight: 400;
+  line-height: 48.409px;
+  text-align: left;
+  z-index: 25;
+}
+.vi-sao-nen-chon-9 {
+  position: relative;
+  color: #000000;
+  font-family: Inter, var(--default-font-family);
+  font-size: 36px;
+  font-weight: 400;
+  line-height: 48.409px;
+  text-align: left;
+}
+.line-break {
+  position: relative;
+  color: #000000;
+  font-family: Inter, var(--default-font-family);
+  font-size: 48px;
+  font-weight: 700;
+  line-height: 57.6px;
+  text-align: left;
+}
+.khi-su-dung-school-medical {
+  position: relative;
+  color: #000000;
+  font-family: Inter, var(--default-font-family);
+  font-size: 18px;
+  font-weight: 500;
+  line-height: 48.409px;
+  text-align: left;
+}
+.image {
+  position: absolute;
+  width: 505px;
+  height: 323px;
+  top: 0;
+  left: 613px;
+  background: url(https://codia-f2c.s3.us-west-1.amazonaws.com/image/2025-05-27/3nTekDHd9c.png)
+    no-repeat center;
+  background-size: cover;
+  z-index: 12;
+}
+.rectangle-a {
+  position: absolute;
+  width: 505px;
+  height: 143px;
+  top: 323px;
+  left: 613px;
+  background: #ffffff;
+  z-index: 26;
+  border-radius: 0 0 30px 30px;
+  box-shadow: 0 4px 4px 0 rgba(0, 0, 0, 0.25);
+}
+.school-medical {
+  position: relative;
+  width: 476px;
+  height: 78px;
+  margin: 2px 0 0 14px;
+  font-family: Inter, var(--default-font-family);
+  font-size: 16px;
+  font-weight: 400;
+  line-height: 19.364px;
+  text-align: left;
+  z-index: 27;
+}
+.start-health-care {
+  position: relative;
+  color: #000000;
+  font-family: Inter, var(--default-font-family);
+  font-size: 16px;
+  font-weight: 500;
+  line-height: 19.364px;
+  text-align: left;
+}
+.convenient-modern-quality {
+  position: relative;
+  color: #000000;
+  font-family: Inter, var(--default-font-family);
+  font-size: 16px;
+  font-weight: 400;
+  line-height: 19.364px;
+  text-align: left;
+}
+.rectangle-b {
+  position: relative;
+  width: 1920px;
+  height: 817px;
+  margin: 46px 0 0 1px;
+  background: #fbfbf8;
+  z-index: 28;
+  overflow: visible auto;
+}
+.flex-row-bfad {
+  position: relative;
+  width: 1210px;
+  height: 214px;
+  margin: 59px 0 0 363px;
+  z-index: 31;
+}
+.rectangle-c {
+  position: absolute;
+  width: 555px;
+  height: 208px;
+  top: 0;
+  left: 655px;
+  background: #ffffff;
+  z-index: 31;
+  border-radius: 20px;
+}
+.regular-health-checkup {
+  position: absolute;
+  width: 498px;
+  height: 127px;
+  top: 40px;
+  left: 28px;
+  font-family: Inter, var(--default-font-family);
+  font-size: 20px;
+  font-weight: 400;
+  line-height: 24.205px;
+  background: url(https://codia-f2c.s3.us-west-1.amazonaws.com/image/2025-05-27/mBvShg7Q5J.png)
+    no-repeat center;
+  background-size: cover;
+  z-index: 35;
+}
+.rectangle-d {
+  position: absolute;
+  width: 555px;
+  height: 208px;
+  top: 6px;
+  left: 0;
+  background: #ffffff;
+  z-index: 30;
+  border-radius: 20px;
+}
+.smart-medical-record {
+  position: absolute;
+  width: 503px;
+  height: 121px;
+  top: 37px;
+  left: 26px;
+  font-family: Inter, var(--default-font-family);
+  font-size: 20px;
+  font-weight: 400;
+  line-height: 24.205px;
+  background: url(https://codia-f2c.s3.us-west-1.amazonaws.com/image/2025-05-27/3XRakR8bTX.png)
+    no-repeat center;
+  background-size: cover;
+  z-index: 34;
+}
+.flex-row-f {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  position: relative;
+  width: 1210px;
+  height: 208px;
+  margin: 27px 0 0 363px;
+  z-index: 33;
+}
+.rectangle-e {
+  flex-shrink: 0;
+  position: relative;
+  width: 555px;
+  height: 208px;
+  background: #ffffff;
+  z-index: 32;
+  border-radius: 20px;
+}
+.school-psychological-support {
+  position: absolute;
+  width: 493px;
+  height: 160px;
+  top: 24px;
+  left: 26px;
+  font-family: Inter, var(--default-font-family);
+  font-size: 20px;
+  font-weight: 400;
+  line-height: 24.205px;
+  background: url(https://codia-f2c.s3.us-west-1.amazonaws.com/image/2025-05-27/r8a6r80WOp.png)
+    no-repeat center;
+  background-size: cover;
+  z-index: 36;
+}
+.rectangle-f {
+  flex-shrink: 0;
+  position: relative;
+  width: 555px;
+  height: 208px;
+  background: #ffffff;
+  z-index: 33;
+  border-radius: 20px;
+}
+.background-disease-management {
+  position: absolute;
+  width: 491px;
+  height: 140px;
+  top: 24px;
+  left: 28px;
+  font-family: Inter, var(--default-font-family);
+  font-size: 20px;
+  font-weight: 400;
+  line-height: 24.205px;
+  background: url(https://codia-f2c.s3.us-west-1.amazonaws.com/image/2025-05-27/hbdqWKebOu.png)
+    no-repeat center;
+  background-size: cover;
+  z-index: 37;
+}
+.flex-row-eb {
+  position: relative;
+  width: 566px;
+  height: 208px;
+  margin: 27px 0 0 682px;
+  z-index: 38;
+}
+.rectangle-10 {
+  position: absolute;
+  width: 555px;
+  height: 208px;
+  top: 0;
+  left: 0;
+  background: #ffffff;
+  z-index: 29;
+  border-radius: 45px;
+}
+.connect-parent-health-school {
+  position: absolute;
+  width: 547px;
+  height: 132px;
+  top: 47px;
+  left: 19px;
+  font-family: Inter, var(--default-font-family);
+  font-size: 20px;
+  font-weight: 400;
+  line-height: 24.205px;
+  background: url(https://codia-f2c.s3.us-west-1.amazonaws.com/image/2025-05-27/o5FhUfLLbS.png)
+    no-repeat center;
+  background-size: cover;
+  z-index: 38;
+}
+.flex-row-11 {
+  position: relative;
+  width: 1698px;
+  height: 683px;
+  margin: 130px 0 0 100px;
+  z-index: 41;
+}
+.image-12 {
+  position: absolute;
+  width: 1024px;
+  height: 683px;
+  top: 0;
+  left: 0;
+  background: url(https://codia-f2c.s3.us-west-1.amazonaws.com/image/2025-05-27/1FVuqEqGnf.png)
+    no-repeat center;
+  background-size: cover;
+  z-index: 40;
+}
+.comprehensive-health-care {
+  position: absolute;
+  width: 622px;
+  height: 664px;
+  top: 19px;
+  left: 1076px;
+  font-family: Inter, var(--default-font-family);
+  font-size: 20px;
+  font-weight: 400;
+  line-height: 24.205px;
+  text-align: left;
+  z-index: 41;
+}
+.comprehensive-health-care-for-students {
+  position: relative;
+  color: #000000;
+  font-family: Inter, var(--default-font-family);
+  font-size: 36px;
+  font-weight: 700;
+  line-height: 43.2px;
+  text-align: left;
+}
+.comprehensive-health-care-for-students-dewey-schools {
+  position: relative;
+  color: #000000;
+  font-family: Inter, var(--default-font-family);
+  font-size: 20px;
+  font-weight: 400;
+  line-height: 24.205px;
+  text-align: left;
+}
+.rectangle-13 {
+  position: relative;
+  width: 1920px;
+  height: 523px;
+  margin: 105px 0 0 -1px;
+  background: #ffffff;
+  z-index: 42;
+  overflow: visible auto;
+}
+.vision-mission {
+  position: relative;
+  width: 646px;
+  height: 399px;
+  margin: 62px 0 0 192px;
+  font-family: Inter, var(--default-font-family);
+  font-size: 24px;
+  font-weight: 400;
+  line-height: 29.045px;
+  text-align: left;
+  z-index: 42;
+}
+.vision-mission-14 {
+  position: relative;
+  color: #000000;
+  font-family: Inter, var(--default-font-family);
+  font-size: 36px;
+  font-weight: 700;
+  line-height: 43.2px;
+  text-align: left;
+}
+.safe-healthy-learning-environment {
+  position: relative;
+  color: #000000;
+  font-family: Inter, var(--default-font-family);
+  font-size: 24px;
+  font-weight: 400;
+  line-height: 29.045px;
+  text-align: left;
+}
+.rectangle-15 {
+  position: relative;
+  width: 1920px;
+  height: 199px;
+  margin: 90px 0 0 0;
+  background: #075a64;
+  z-index: 43;
+  overflow: visible auto;
+}
+.student-health-top-priority {
+  position: relative;
+  width: 1431px;
+  height: 123px;
+  margin: 32px 0 0 281px;
+  font-family: Inter, var(--default-font-family);
+  font-size: 24px;
+  font-weight: 700;
+  line-height: 29.045px;
+  text-align: center;
+  z-index: 44;
+}
+.student-health-top-priority-16 {
+  position: relative;
+  color: #ffffff;
+  font-family: Inter, var(--default-font-family);
+  font-size: 32px;
+  font-weight: 700;
+  line-height: 38.4px;
+  text-align: center;
+}
+.monitor-child-health {
+  position: relative;
+  color: #ffffff;
+  font-family: Inter, var(--default-font-family);
+  font-size: 24px;
+  font-weight: 700;
+  line-height: 29.045px;
+  text-align: center;
+}
+.rectangle-17 {
+  position: relative;
+  width: 1920px;
+  height: 278px;
+  margin: 0 0 0 0;
+  background: url(https://codia-f2c.s3.us-west-1.amazonaws.com/image/2025-05-27/LEWiuR0DWY.png)
+    no-repeat center;
+  background-size: cover;
+  z-index: 45;
+  overflow: visible auto;
+}
+.flex-row-18 {
+  position: relative;
+  width: 1030px;
+  height: 159px;
+  margin: 45px 0 0 113px;
+  z-index: 58;
+}
+.school-info {
+  display: flex;
+  align-items: flex-start;
+  justify-content: flex-start;
+  position: absolute;
+  width: 442px;
+  height: 159px;
+  top: 0;
+  left: 0;
+  color: #000000;
+  font-family: Inter, var(--default-font-family);
+  font-size: 16px;
+  font-weight: 700;
+  line-height: 19.364px;
+  text-align: left;
+  z-index: 55;
+}
+.social-icons {
+  display: flex;
+  align-items: flex-start;
+  flex-wrap: nowrap;
+  gap: 8px;
+  position: absolute;
+  width: 264px;
+  height: 40px;
+  top: 33px;
+  left: 766px;
+  z-index: 46;
+}
+.buttons-icon {
+  flex-shrink: 0;
+  position: relative;
+  width: 60px;
+  height: 60px;
+  z-index: 47;
+  border-radius: 4px;
+}
+.icon {
+  position: relative;
+  width: 24px;
+  height: 24px;
+  margin: 8px 0 0 8px;
+  background: url(https://codia-f2c.s3.us-west-1.amazonaws.com/image/2025-05-27/xQXZhSUCOj.png)
+    no-repeat center;
+  background-size: cover;
+  z-index: 48;
+}
+.buttons-icon-19 {
+  flex-shrink: 0;
+  position: relative;
+  width: 60px;
+  height: 60px;
+  z-index: 49;
+  border-radius: 4px;
+}
+.icon-1a {
+  position: relative;
+  width: 24px;
+  height: 24px;
+  margin: 8px 0 0 8px;
+  background: url(https://codia-f2c.s3.us-west-1.amazonaws.com/image/2025-05-27/R7rdtk4yCb.png)
+    no-repeat center;
+  background-size: cover;
+  z-index: 50;
+}
+.buttons-icon-1b {
+  flex-shrink: 0;
+  position: relative;
+  width: 60px;
+  height: 60px;
+  z-index: 51;
+  border-radius: 4px;
+}
+.icon-1c {
+  position: relative;
+  width: 24px;
+  height: 24px;
+  margin: 8px 0 0 8px;
+  background: url(https://codia-f2c.s3.us-west-1.amazonaws.com/image/2025-05-27/kTrsMfmyMp.png)
+    no-repeat center;
+  background-size: cover;
+  z-index: 52;
+}
+.buttons-icon-1d {
+  flex-shrink: 0;
+  position: relative;
+  width: 60px;
+  height: 60px;
+  z-index: 53;
+  border-radius: 4px;
+}
+.icon-1e {
+  position: relative;
+  width: 24px;
+  height: 24px;
+  margin: 8px 0 0 8px;
+  background: url(https://codia-f2c.s3.us-west-1.amazonaws.com/image/2025-05-27/yvgzEaF0n2.png)
+    no-repeat center;
+  background-size: cover;
+  z-index: 54;
+}
+.contact {
+  display: flex;
+  align-items: flex-start;
+  justify-content: flex-start;
+  position: absolute;
+  height: 19px;
+  top: 104px;
+  left: 766px;
+  color: #000000;
+  font-family: Inter, var(--default-font-family);
+  font-size: 16px;
+  font-weight: 700;
+  line-height: 19px;
+  text-align: left;
+  white-space: nowrap;
+  z-index: 57;
+}
+.phone-number {
+  display: flex;
+  align-items: flex-start;
+  justify-content: flex-start;
+  position: absolute;
+  height: 19px;
+  top: 104px;
+  left: 854px;
+  color: #000000;
+  font-family: Inter, var(--default-font-family);
+  font-size: 16px;
+  font-weight: 700;
+  line-height: 19px;
+  text-align: left;
+  white-space: nowrap;
+  z-index: 58;
+}
+.copyright {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  position: relative;
+  width: 705px;
+  height: 55px;
+  margin: 0 0 0 644px;
+  color: #000000;
+  font-family: Inter, var(--default-font-family);
+  font-size: 16px;
+  font-weight: 700;
+  line-height: 19.364px;
+  text-align: center;
+  z-index: 56;
+}
+.image-1f {
+  position: absolute;
+  width: 1002px;
+  height: 527px;
+  top: 2593px;
+  left: 920px;
+  background: url(https://codia-f2c.s3.us-west-1.amazonaws.com/image/2025-05-27/Z7NE6Z4R86.png)
+    no-repeat center;
+  background-size: cover;
+  z-index: 60;
+}
+
+/* Hero Section */
+.hero-banner {
+  position: relative;
+  width: 100%;
+  height: 500px;
+  background: linear-gradient(135deg, rgba(52, 152, 219, 0.9), rgba(26, 82, 118, 0.9)),
+              url("../assets/hero-bg.jpg") no-repeat center center;
+  background-size: cover;
+  color: white;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  padding: 0 20px;
+}
+
+.he-thong-quan-ly-y-te {
+  max-width: 800px;
+}
+
+.he-thong-quan-ly-y-te h1 {
+  font-size: 3rem;
+  margin-bottom: 20px;
+  font-weight: 700;
+}
+
+.he-thong-quan-ly-y-te p {
+  font-size: 1.5rem;
+  font-weight: 300;
+}
+
+/* Giới thiệu Section */
+.flex-row-d {
+  display: flex;
+  padding: 80px 20px;
+  flex-wrap: wrap;
+  justify-content: space-between;
+  background-color: #f9f9f9;
+}
+
+.vi-sao-nen-chon {
+  flex: 1;
+  min-width: 300px;
+  padding-right: 30px;
+}
+
+.vi-sao-nen-chon-9 {
+  font-size: 2rem;
+  font-weight: 700;
+  color: #2c3e50;
+  display: block;
+  margin-bottom: 20px;
+}
+
+.khi-su-dung-school-medical {
+  font-size: 1rem;
+  line-height: 1.6;
+  color: #666;
+}
+
+.image {
+  flex: 0 0 350px;
+  height: 350px;
+  background-size: cover;
+  background-position: center;
+  border-radius: 10px;
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+  margin: 0 20px;
+}
+
+.rectangle-a {
+  flex: 1;
+  min-width: 300px;
+  background: linear-gradient(135deg, #3498db, #2980b9);
+  color: white;
+  padding: 30px;
+  border-radius: 10px;
+  box-shadow: 0 10px 30px rgba(52, 152, 219, 0.3);
+}
+
+.start-health-care {
+  font-size: 1.5rem;
+  font-weight: 700;
+  display: block;
+  margin-bottom: 15px;
+}
+
+.convenient-modern-quality {
+  font-size: 1rem;
+  line-height: 1.5;
+}
+
+/* Features Section */
+.rectangle-b {
+  padding: 80px 20px;
+  background-color: #fff;
+}
+
+.flex-row-bfad, .flex-row-f, .flex-row-eb {
+  display: flex;
+  justify-content: center;
+  gap: 30px;
+  margin-bottom: 30px;
+  flex-wrap: wrap;
+}
+
+.rectangle-c, .rectangle-d, .rectangle-e, 
+.rectangle-f, .rectangle-10, .connect-parent-health-school {
+  flex: 0 0 calc(50% - 50px);
+  min-width: 300px;
+  background: #fff;
+  border-radius: 15px;
+  padding: 30px;
+  box-shadow: 0 5px 20px rgba(0, 0, 0, 0.05);
+  transition: all 0.3s ease;
+}
+
+.rectangle-c:hover, .rectangle-d:hover, 
+.rectangle-e:hover, .rectangle-f:hover, 
+.rectangle-10:hover, .connect-parent-health-school:hover {
+  transform: translateY(-10px);
+  box-shadow: 0 15px 35px rgba(0, 0, 0, 0.1);
+}
+
+.regular-health-checkup, .smart-medical-record, 
+.school-psychological-support, .background-disease-management,
+.rectangle-10, .connect-parent-health-school {
+  text-align: center;
+}
+
+.regular-health-checkup i, 
+.smart-medical-record i, 
+.school-psychological-support i, 
+.background-disease-management i,
+.rectangle-10 i, 
+.connect-parent-health-school i {
+  font-size: 3rem;
+  color: #3498db;
+  margin-bottom: 20px;
+}
+
+.regular-health-checkup h3, 
+.smart-medical-record h3, 
+.school-psychological-support h3, 
+.background-disease-management h3,
+.rectangle-10 h3, 
+.connect-parent-health-school h3 {
+  font-size: 1.3rem;
+  font-weight: 600;
+  color: #2c3e50;
+}
+
+/* About Section */
+.flex-row-11 {
+  display: flex;
+  padding: 80px 20px;
+  background-color: #f5f7fa;
+  flex-wrap: wrap;
+}
+
+.image-12 {
+  flex: 0 0 400px;
+  height: 400px;
+  background-size: cover;
+  background-position: center;
+  border-radius: 10px;
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+  margin-right: 50px;
+}
+
+.comprehensive-health-care {
+  flex: 1;
+  min-width: 300px;
+}
+
+.comprehensive-health-care-for-students {
+  font-size: 2rem;
+  font-weight: 700;
+  color: #2c3e50;
+  display: block;
+  margin-bottom: 20px;
+  position: relative;
+  padding-bottom: 15px;
+}
+
+.comprehensive-health-care-for-students::after {
+  content: '';
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  width: 70px;
+  height: 3px;
+  background: linear-gradient(to right, #3498db, #9b59b6);
+}
+
+.comprehensive-health-care-for-students-dewey-schools {
+  font-size: 1rem;
+  line-height: 1.6;
+  color: #666;
+}
+
+/* Vision Section */
+.rectangle-13 {
+  padding: 80px 20px;
+  background: linear-gradient(135deg, rgba(155, 89, 182, 0.1), rgba(142, 68, 173, 0.1));
+  text-align: center;
+}
+
+.vision-mission {
+  max-width: 900px;
+  margin: 0 auto;
+}
+
+.vision-mission-14 {
+  font-size: 2rem;
+  font-weight: 700;
+  color: #2c3e50;
+  display: block;
+  margin-bottom: 20px;
+  position: relative;
+  padding-bottom: 15px;
+}
+
+.vision-mission-14::after {
+  content: '';
+  position: absolute;
+  bottom: 0;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 70px;
+  height: 3px;
+  background: linear-gradient(to right, #3498db, #9b59b6);
+}
+
+.safe-healthy-learning-environment {
+  font-size: 1.1rem;
+  line-height: 1.8;
+  color: #555;
+}
+
+/* CTA Section */
+.rectangle-15 {
+  padding: 80px 20px;
+  background: linear-gradient(135deg, #3498db, #1a5276);
+  color: white;
+  text-align: center;
+}
+
+.student-health-top-priority {
+  max-width: 800px;
+  margin: 0 auto;
+}
+
+.student-health-top-priority-16 {
+  font-size: 2rem;
+  font-weight: 700;
+  display: block;
+  margin-bottom: 20px;
+}
+
+.monitor-child-health {
+  font-size: 1.2rem;
+  line-height: 1.6;
+  display: block;
+  margin-bottom: 30px;
+}
+
+.cta-buttons {
+  display: flex;
+  justify-content: center;
+  gap: 20px;
+  margin-top: 30px;
+  flex-wrap: wrap;
+}
+
+.cta-button {
+  display: inline-block;
+  padding: 14px 30px;
+  border-radius: 30px;
+  font-weight: 600;
+  font-size: 1rem;
+  text-decoration: none;
+  transition: all 0.3s ease;
+}
+
+.primary-btn {
+  background-color: #e67e22;
+  color: white;
+  box-shadow: 0 4px 10px rgba(230, 126, 34, 0.3);
+}
+
+.primary-btn:hover {
+  background-color: #d35400;
+  transform: translateY(-3px);
+  box-shadow: 0 6px 15px rgba(230, 126, 34, 0.4);
+}
+
+.secondary-btn {
+  background-color: transparent;
+  color: white;
+  border: 2px solid white;
+}
+
+.secondary-btn:hover {
+  background-color: rgba(255, 255, 255, 0.1);
+  transform: translateY(-3px);
+}
+
+/* Responsive Styles */
+@media (max-width: 992px) {
+  .flex-row-d, .flex-row-11 {
+    flex-direction: column;
+  }
+  
+  .image, .image-12 {
+    margin: 30px 0;
+    flex: 0 0 300px;
+  }
+  
+  .vi-sao-nen-chon, .rectangle-a, .comprehensive-health-care {
+    padding: 0;
+    margin-bottom: 30px;
+  }
+}
+
+@media (max-width: 768px) {
+  .he-thong-quan-ly-y-te h1 {
+    font-size: 2rem;
+  }
+  
+  .vi-sao-nen-chon-9,
+  .comprehensive-health-care-for-students,
+  .vision-mission-14,
+  .student-health-top-priority-16 {
+    font-size: 1.5rem;
+  }
+  
+  .start-health-care {
+    font-size: 1.3rem;
+  }
+}

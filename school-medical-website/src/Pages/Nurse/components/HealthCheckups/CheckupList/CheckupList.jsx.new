@@ -1,0 +1,637 @@
+import React, { useState, useEffect } from 'react';
+import { Modal, Button, Form, Row, Col } from 'react-bootstrap';
+import healthCheckupService from '../../../../../services/healthCheckupService';
+import { useAuth } from '../../../../../context/AuthContext';
+import './CheckupList.css';
+
+const CheckupList = ({ campaigns, onCampaignSelect, refreshData }) => {
+  // Lấy thông tin người dùng từ context
+  const { currentUser } = useAuth();
+  
+  // State cho form thêm/sửa đợt khám
+  const [showForm, setShowForm] = useState(false);
+  const [formMode, setFormMode] = useState('add'); // 'add' hoặc 'edit'
+  const [formData, setFormData] = useState({
+    name: '',
+    type: 'Toàn trường',
+    targetGrades: '',
+    targetClasses: '',
+    scheduledDate: '',
+    endDate: '',
+    checkupItems: [],
+    description: '',
+    status: 'Chưa bắt đầu',
+    createdBy: currentUser?.name || 'Y tá trường'
+  });
+  const [filteredCampaigns, setFilteredCampaigns] = useState([]);
+  const [filterStatus, setFilterStatus] = useState('all');
+  const [searchTerm, setSearchTerm] = useState('');
+  const [loading, setLoading] = useState(false);
+  
+  // Cập nhật dữ liệu lọc khi campaigns thay đổi
+  useEffect(() => {
+    if (campaigns && campaigns.length > 0) {
+      applyFilters();
+    } else {
+      setFilteredCampaigns([]);
+    }
+  }, [campaigns, filterStatus, searchTerm]);
+  
+  // Xử lý lọc dữ liệu
+  const applyFilters = () => {
+    let filtered = [...campaigns];
+    
+    // Lọc theo trạng thái
+    if (filterStatus !== 'all') {
+      filtered = filtered.filter(campaign => campaign.status === filterStatus);
+    }
+    
+    // Lọc theo từ khoá tìm kiếm
+    if (searchTerm.trim() !== '') {
+      const term = searchTerm.toLowerCase();
+      filtered = filtered.filter(campaign => 
+        campaign.name.toLowerCase().includes(term) || 
+        campaign.description?.toLowerCase().includes(term) ||
+        campaign.targetGrades.toLowerCase().includes(term) ||
+        campaign.targetClasses.toLowerCase().includes(term)
+      );
+    }
+    
+    // Sắp xếp theo ngày gần nhất
+    filtered = filtered.sort((a, b) => new Date(b.scheduledDate) - new Date(a.scheduledDate));
+    
+    setFilteredCampaigns(filtered);
+  };
+  
+  // Khởi tạo form mới
+  const initNewForm = () => {
+    return {
+      name: '',
+      type: 'Toàn trường',
+      targetGrades: '',
+      targetClasses: '',
+      scheduledDate: '',
+      endDate: '',
+      checkupItems: [],
+      description: '',
+      status: 'Chưa bắt đầu',
+      createdBy: currentUser?.name || 'Y tá trường'
+    };
+  };
+  
+  // Mở form tạo mới
+  const handleAddNew = () => {
+    setFormMode('add');
+    setFormData(initNewForm());
+    setShowForm(true);
+  };
+  
+  // Mở form chỉnh sửa
+  const handleEdit = (campaign) => {
+    const formatDate = (dateString) => {
+      if (!dateString) return '';
+      // Đảm bảo định dạng ngày phù hợp với input type="date"
+      const date = new Date(dateString);
+      return date.toISOString().split('T')[0];
+    };
+    
+    setFormMode('edit');
+    setFormData({
+      ...campaign,
+      scheduledDate: formatDate(campaign.scheduledDate),
+      endDate: formatDate(campaign.endDate),
+      // Đảm bảo checkupItems luôn là array
+      checkupItems: campaign.checkupItems || []
+    });
+    setShowForm(true);
+  };
+  
+  // Xử lý thay đổi input form
+  const handleInputChange = (e) => {
+    const { name, value } = e.target;
+    setFormData(prev => ({
+      ...prev,
+      [name]: value
+    }));
+  };
+  
+  // Xử lý thay đổi các checkbox hạng mục khám
+  const handleCheckupItemChange = (e) => {
+    const { value, checked } = e.target;
+    
+    setFormData(prev => {
+      if (checked) {
+        return {
+          ...prev,
+          checkupItems: [...prev.checkupItems, value]
+        };
+      } else {
+        return {
+          ...prev,
+          checkupItems: prev.checkupItems.filter(item => item !== value)
+        };
+      }
+    });
+  };
+  
+  // Kiểm tra dữ liệu form trước khi submit
+  const validateForm = () => {
+    const requiredFields = ['name', 'scheduledDate', 'endDate', 'targetGrades', 'targetClasses'];
+    const missingFields = requiredFields.filter(field => !formData[field]);
+    
+    if (missingFields.length > 0) {
+      alert(`Vui lòng điền đầy đủ các trường: ${missingFields.join(', ')}`);
+      return false;
+    }
+    
+    // Kiểm tra ngày hợp lệ
+    const startDate = new Date(formData.scheduledDate);
+    const endDate = new Date(formData.endDate);
+    
+    if (endDate < startDate) {
+      alert("Ngày kết thúc phải sau ngày bắt đầu!");
+      return false;
+    }
+    
+    // Kiểm tra hạng mục khám
+    if (formData.checkupItems.length === 0) {
+      alert("Vui lòng chọn ít nhất một hạng mục khám");
+      return false;
+    }
+    
+    return true;
+  };
+  
+  // Xử lý submit form
+  const handleSubmit = async (e) => {
+    e.preventDefault();
+    
+    if (!validateForm()) return;
+    
+    try {
+      setLoading(true);
+      
+      if (formMode === 'add') {
+        await healthCheckupService.createCheckupCampaign(formData);
+        alert("Thêm đợt khám mới thành công!");
+      } else {
+        await healthCheckupService.updateCheckupCampaign(formData.id, formData);
+        alert("Cập nhật đợt khám thành công!");
+      }
+      
+      setShowForm(false);
+      refreshData(); // Làm mới dữ liệu
+    } catch (error) {
+      console.error("Error saving campaign:", error);
+      alert(`Có lỗi xảy ra khi lưu đợt khám: ${error.message}`);
+    } finally {
+      setLoading(false);
+    }
+  };
+  
+  // Xóa đợt khám
+  const handleDelete = async (campaign) => {
+    // Bảo vệ khỏi xóa nhầm với nhiều thông tin hơn
+    const confirmMessage = `Bạn có chắc chắn muốn xoá đợt khám "${campaign.name}"?\n\nThông tin đợt khám:\n- Thời gian: ${new Date(campaign.scheduledDate).toLocaleDateString('vi-VN')} đến ${new Date(campaign.endDate).toLocaleDateString('vi-VN')}\n- Trạng thái: ${campaign.status}\n\nLưu ý: Hành động này không thể hoàn tác!`;
+    
+    if (window.confirm(confirmMessage)) {
+      try {
+        setLoading(true);
+        await healthCheckupService.deleteCheckupCampaign(campaign.id);
+        alert("Xóa đợt khám thành công!");
+        refreshData();
+      } catch (error) {
+        console.error("Error deleting campaign:", error);
+        alert(`Có lỗi xảy ra khi xóa đợt khám: ${error.message}`);
+      } finally {
+        setLoading(false);
+      }
+    }
+  };
+  
+  // Cập nhật trạng thái đợt khám
+  const handleStatusChange = async (campaignId, newStatus) => {
+    try {
+      setLoading(true);
+      await healthCheckupService.updateCheckupCampaignStatus(campaignId, newStatus);
+      refreshData();
+    } catch (error) {
+      console.error("Error updating campaign status:", error);
+      alert(`Có lỗi xảy ra khi cập nhật trạng thái: ${error.message}`);
+    } finally {
+      setLoading(false);
+    }
+  };
+  
+  // Hiển thị màu sắc theo trạng thái
+  const getStatusClass = (status) => {
+    switch (status) {
+      case 'Đang diễn ra':
+        return 'status-active';
+      case 'Sắp diễn ra':
+      case 'Chưa bắt đầu':
+        return 'status-upcoming';
+      case 'Đã hoàn thành':
+        return 'status-completed';
+      case 'Huỷ':
+        return 'status-cancelled';
+      default:
+        return '';
+    }
+  };
+  
+  // Định dạng ngày
+  const formatDate = (dateString) => {
+    if (!dateString) return '';
+    const date = new Date(dateString);
+    return date.toLocaleDateString('vi-VN');
+  };
+
+  return (
+    <div className="checkup-list-container">
+      {loading && (
+        <div className="loading-overlay">
+          <div className="spinner"></div>
+          <p>Đang xử lý...</p>
+        </div>
+      )}
+      
+      <div className="checkup-list-header">
+        <h2>Danh sách đợt khám sức khoẻ</h2>
+        <div className="controls">
+          <div className="search-filter-container">
+            <input
+              type="text"
+              placeholder="Tìm kiếm đợt khám..."
+              value={searchTerm}
+              onChange={(e) => setSearchTerm(e.target.value)}
+              className="search-input"
+            />
+            <select 
+              value={filterStatus}
+              onChange={(e) => setFilterStatus(e.target.value)}
+              className="filter-select"
+            >
+              <option value="all">Tất cả trạng thái</option>
+              <option value="Đang diễn ra">Đang diễn ra</option>
+              <option value="Sắp diễn ra">Sắp diễn ra</option>
+              <option value="Đã hoàn thành">Đã hoàn thành</option>
+              <option value="Huỷ">Đã huỷ</option>
+              <option value="Chưa bắt đầu">Chưa bắt đầu</option>
+            </select>
+          </div>
+          <button className="add-btn" onClick={handleAddNew}>
+            <i className="fas fa-plus"></i> Thêm đợt khám mới
+          </button>
+        </div>
+      </div>
+
+      {/* Bảng danh sách đợt khám */}
+      <div className="table-container">
+        <table className="checkup-table">
+          <thead>
+            <tr>
+              <th>Tên đợt khám</th>
+              <th>Loại đợt khám</th>
+              <th>Mục tiêu</th>
+              <th>Ngày khám</th>
+              <th>Tiến độ</th>
+              <th>Trạng thái</th>
+              <th>Thao tác</th>
+            </tr>
+          </thead>
+          <tbody>
+            {filteredCampaigns.length > 0 ? (
+              filteredCampaigns.map((campaign) => (
+                <tr key={campaign.id}>
+                  <td>
+                    <div className="campaign-name" onClick={() => onCampaignSelect(campaign)}>
+                      {campaign.name}
+                      <span className="view-details">Xem chi tiết</span>
+                    </div>
+                    <div className="campaign-description">{campaign.description}</div>
+                  </td>
+                  <td>{campaign.type}</td>
+                  <td>
+                    <div>Khối: {campaign.targetGrades}</div>
+                    <div>Lớp: {campaign.targetClasses}</div>
+                  </td>
+                  <td>
+                    <div>Bắt đầu: {formatDate(campaign.scheduledDate)}</div>
+                    <div>Kết thúc: {formatDate(campaign.endDate)}</div>
+                  </td>
+                  <td>
+                    <div className="progress">
+                      <div 
+                        className="progress-bar" 
+                        style={{ 
+                          width: `${campaign.totalStudents ? Math.round((campaign.completedStudents / campaign.totalStudents) * 100) : 0}%` 
+                        }}
+                      ></div>
+                    </div>
+                    <div className="progress-text">
+                      {campaign.completedStudents}/{campaign.totalStudents || 0} 
+                      ({campaign.totalStudents ? Math.round((campaign.completedStudents / campaign.totalStudents) * 100) : 0}%)
+                    </div>
+                  </td>
+                  <td>
+                    <span className={`status-badge ${getStatusClass(campaign.status)}`}>
+                      {campaign.status}
+                    </span>
+                  </td>
+                  <td>
+                    <div className="action-buttons">
+                      <button 
+                        className="action-btn edit-btn" 
+                        onClick={() => handleEdit(campaign)}
+                        title="Chỉnh sửa"
+                      >
+                        <i className="fas fa-edit"></i>
+                      </button>
+                      <button 
+                        className="action-btn delete-btn" 
+                        onClick={() => handleDelete(campaign)}
+                        title="Xoá"
+                      >
+                        <i className="fas fa-trash"></i>
+                      </button>
+                      <div className="status-dropdown">
+                        <button className="action-btn status-btn" title="Thay đổi trạng thái">
+                          <i className="fas fa-ellipsis-v"></i>
+                        </button>
+                        <div className="status-dropdown-content">
+                          <button onClick={() => handleStatusChange(campaign.id, 'Chưa bắt đầu')}>Chưa bắt đầu</button>
+                          <button onClick={() => handleStatusChange(campaign.id, 'Sắp diễn ra')}>Sắp diễn ra</button>
+                          <button onClick={() => handleStatusChange(campaign.id, 'Đang diễn ra')}>Đang diễn ra</button>
+                          <button onClick={() => handleStatusChange(campaign.id, 'Đã hoàn thành')}>Đã hoàn thành</button>
+                          <button onClick={() => handleStatusChange(campaign.id, 'Huỷ')}>Huỷ đợt khám</button>
+                        </div>
+                      </div>
+                    </div>
+                  </td>
+                </tr>
+              ))
+            ) : (
+              <tr>
+                <td colSpan="7" className="empty-message">
+                  {searchTerm || filterStatus !== 'all' 
+                    ? 'Không tìm thấy đợt khám nào phù hợp với điều kiện lọc.'
+                    : 'Chưa có đợt khám nào. Hãy thêm đợt khám mới.'}
+                </td>
+              </tr>
+            )}
+          </tbody>
+        </table>
+      </div>
+      
+      {/* Form thêm/chỉnh sửa đợt khám */}
+      <Modal 
+        show={showForm} 
+        onHide={() => setShowForm(false)} 
+        size="lg"
+        backdrop="static"
+        keyboard={false}
+      >
+        <Modal.Header closeButton>
+          <Modal.Title>
+            {formMode === 'add' ? 'Thêm đợt khám mới' : 'Chỉnh sửa đợt khám'}
+          </Modal.Title>
+        </Modal.Header>
+        <Modal.Body>
+          <Form onSubmit={handleSubmit}>
+            <Form.Group className="mb-3">
+              <Form.Label>Tên đợt khám <span className="required">*</span></Form.Label>
+              <Form.Control 
+                type="text" 
+                name="name"
+                value={formData.name} 
+                onChange={handleInputChange}
+                required
+              />
+            </Form.Group>
+            
+            <Row>
+              <Col md={6}>
+                <Form.Group className="mb-3">
+                  <Form.Label>Loại đợt khám <span className="required">*</span></Form.Label>
+                  <Form.Select 
+                    name="type" 
+                    value={formData.type} 
+                    onChange={handleInputChange}
+                    required
+                  >
+                    <option value="Toàn trường">Toàn trường</option>
+                    <option value="Theo khối">Theo khối</option>
+                    <option value="Theo lớp">Theo lớp</option>
+                    <option value="Định kỳ học kỳ">Định kỳ học kỳ</option>
+                    <option value="Định kỳ quý">Định kỳ quý</option>
+                  </Form.Select>
+                </Form.Group>
+              </Col>
+              <Col md={6}>
+                <Form.Group className="mb-3">
+                  <Form.Label>Khối lớp <span className="required">*</span></Form.Label>
+                  <Form.Control 
+                    type="text" 
+                    name="targetGrades"
+                    placeholder="Ví dụ: 10, 11, 12 hoặc Tất cả" 
+                    value={formData.targetGrades} 
+                    onChange={handleInputChange}
+                    required
+                  />
+                </Form.Group>
+              </Col>
+            </Row>
+            
+            <Form.Group className="mb-3">
+              <Form.Label>Các lớp áp dụng <span className="required">*</span></Form.Label>
+              <Form.Control 
+                type="text" 
+                name="targetClasses"
+                placeholder="Ví dụ: 10A1, 10A2 hoặc Tất cả" 
+                value={formData.targetClasses} 
+                onChange={handleInputChange}
+                required
+              />
+            </Form.Group>
+            
+            <Row>
+              <Col md={6}>
+                <Form.Group className="mb-3">
+                  <Form.Label>Ngày bắt đầu <span className="required">*</span></Form.Label>
+                  <Form.Control 
+                    type="date" 
+                    name="scheduledDate"
+                    value={formData.scheduledDate} 
+                    onChange={handleInputChange}
+                    required
+                  />
+                </Form.Group>
+              </Col>
+              <Col md={6}>
+                <Form.Group className="mb-3">
+                  <Form.Label>Ngày kết thúc <span className="required">*</span></Form.Label>
+                  <Form.Control 
+                    type="date" 
+                    name="endDate"
+                    value={formData.endDate} 
+                    onChange={handleInputChange}
+                    required
+                  />
+                </Form.Group>
+              </Col>
+            </Row>
+            
+            <Form.Group className="mb-3">
+              <Form.Label>Các hạng mục khám <span className="required">*</span></Form.Label>
+              <div className="checkup-items-container">
+                <Row>
+                  <Col md={4}>
+                    <Form.Check 
+                      type="checkbox" 
+                      label="Chiều cao" 
+                      value="Chiều cao"
+                      checked={formData.checkupItems.includes('Chiều cao')}
+                      onChange={handleCheckupItemChange}
+                    />
+                  </Col>
+                  <Col md={4}>
+                    <Form.Check 
+                      type="checkbox" 
+                      label="Cân nặng" 
+                      value="Cân nặng"
+                      checked={formData.checkupItems.includes('Cân nặng')}
+                      onChange={handleCheckupItemChange}
+                    />
+                  </Col>
+                  <Col md={4}>
+                    <Form.Check 
+                      type="checkbox" 
+                      label="BMI" 
+                      value="BMI"
+                      checked={formData.checkupItems.includes('BMI')}
+                      onChange={handleCheckupItemChange}
+                    />
+                  </Col>
+                </Row>
+                <Row>
+                  <Col md={4}>
+                    <Form.Check 
+                      type="checkbox" 
+                      label="Thị lực" 
+                      value="Thị lực"
+                      checked={formData.checkupItems.includes('Thị lực')}
+                      onChange={handleCheckupItemChange}
+                    />
+                  </Col>
+                  <Col md={4}>
+                    <Form.Check 
+                      type="checkbox" 
+                      label="Thính lực" 
+                      value="Thính lực"
+                      checked={formData.checkupItems.includes('Thính lực')}
+                      onChange={handleCheckupItemChange}
+                    />
+                  </Col>
+                  <Col md={4}>
+                    <Form.Check 
+                      type="checkbox" 
+                      label="Huyết áp" 
+                      value="Huyết áp"
+                      checked={formData.checkupItems.includes('Huyết áp')}
+                      onChange={handleCheckupItemChange}
+                    />
+                  </Col>
+                </Row>
+                <Row>
+                  <Col md={4}>
+                    <Form.Check 
+                      type="checkbox" 
+                      label="Nhịp tim" 
+                      value="Nhịp tim"
+                      checked={formData.checkupItems.includes('Nhịp tim')}
+                      onChange={handleCheckupItemChange}
+                    />
+                  </Col>
+                  <Col md={4}>
+                    <Form.Check 
+                      type="checkbox" 
+                      label="Tình trạng răng" 
+                      value="Tình trạng răng"
+                      checked={formData.checkupItems.includes('Tình trạng răng')}
+                      onChange={handleCheckupItemChange}
+                    />
+                  </Col>
+                  <Col md={4}>
+                    <Form.Check 
+                      type="checkbox" 
+                      label="Kiểm tra mắt chuyên sâu" 
+                      value="Kiểm tra mắt chuyên sâu"
+                      checked={formData.checkupItems.includes('Kiểm tra mắt chuyên sâu')}
+                      onChange={handleCheckupItemChange}
+                    />
+                  </Col>
+                </Row>
+              </div>
+              <Form.Text className="text-muted">
+                Vui lòng chọn ít nhất một hạng mục khám
+              </Form.Text>
+            </Form.Group>
+            
+            <Form.Group className="mb-3">
+              <Form.Label>Trạng thái</Form.Label>
+              <Form.Select
+                name="status"
+                value={formData.status}
+                onChange={handleInputChange}
+              >
+                <option value="Chưa bắt đầu">Chưa bắt đầu</option>
+                <option value="Sắp diễn ra">Sắp diễn ra</option>
+                <option value="Đang diễn ra">Đang diễn ra</option>
+                <option value="Đã hoàn thành">Đã hoàn thành</option>
+                <option value="Huỷ">Huỷ</option>
+              </Form.Select>
+            </Form.Group>
+            
+            <Form.Group className="mb-3">
+              <Form.Label>Mô tả</Form.Label>
+              <Form.Control 
+                as="textarea" 
+                rows={3} 
+                name="description"
+                value={formData.description} 
+                onChange={handleInputChange}
+                placeholder="Nhập mô tả chi tiết về đợt khám (không bắt buộc)"
+              />
+            </Form.Group>
+            
+            <div className="d-flex justify-content-between align-items-center mt-4">
+              <div className="form-note">
+                <span className="required">*</span> Trường bắt buộc
+              </div>
+              <div>
+                <Button 
+                  variant="secondary" 
+                  onClick={() => setShowForm(false)} 
+                  className="me-2"
+                  disabled={loading}
+                >
+                  Huỷ
+                </Button>
+                <Button 
+                  variant="primary" 
+                  type="submit"
+                  disabled={loading}
+                >
+                  {loading ? 'Đang xử lý...' : (formMode === 'add' ? 'Thêm mới' : 'Cập nhật')}
+                </Button>
+              </div>
+            </div>
+          </Form>
+        </Modal.Body>
+      </Modal>
+    </div>
+  );
+};
+
+export default CheckupList;
